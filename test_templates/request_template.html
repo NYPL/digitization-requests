@@ -10,17 +10,23 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <style>
-body {
-    padding-top: 2rem;
-}
-.top-buffer { margin-top: 5rem; }
+.top-buffer { margin-top: 4rem; }
 .bottom-buffer { margin-bottom: 2rem; }
 </style>
 </head>
 <body>
-
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link" href="https://nypl.github.io/digitization-requests/index.html">Back to Requests</a>
+    </div>
+  </div>
+</nav>
 <div class="container">
-    <div class="row">
+    <div class="row top-buffer">
         <div class="col-lg-12">
             <div class="bs-component">
                 <div class="jumbotron">
@@ -71,80 +77,10 @@ body {
         </tr>
     </table>
 
-
     <div class="row top-buffer bottom-buffer">
         <div class="col-lg-12">
             <div class="page-header">
-                <h1 class="display-5">Level of Effort Ratings by Production Group:</h1>
-            </div>
-        </div>
-    </div>
-
-      <!-- Containers
-      ================================================== -->
-      <div class="bs-docs-section">
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="bs-component">
-              <div class="card {{request.ref_effort_text}} {{request.ref_effort_color}} mb-3">
-                <h5 class="card-header">Reformatting Effort (DIU)</h5>
-                <div class="card-body">
-                  <h3 class="card-title">{{request.ref_effort_score}}</h3>
-                  <p class="card-text">{{request.ref_effort_notes}}</p>
-                </div>
-              </div>
-              <div class="card {{request.reg_effort_text}} {{request.reg_effort_color}} mb-3">
-                <h5 class="card-header">Registrar Effort (Collections Management/Registrar)</h5>
-                <div class="card-body">
-                  <h3 class="card-title">{{request.reg_effort_score}}</h3>
-                  <p class="card-text">{{request.reg_effort_notes}}</p>
-                </div>
-              </div>
-              <div class="card {{request.cons_effort_text}} {{request.cons_effort_color}} mb-3">
-                <h5 class="card-header">Conservation/Preservation effort (Collections Management/Conservation)</h5>
-                <div class="card-body">
-                  <h3 class="card-title">{{request.cons_effort_score}}</h3>
-                  <p class="card-text">{{request.cons_effort_notes}}</p>
-                </div>
-              </div>
-              <div class="card {{request.proc_effort_text}} {{request.proc_effort_color}} mb-3">
-                <h5 class="card-header">Processing effort (SFP/Archives)</h5>
-                <div class="card-body">
-                  <h3 class="card-title">{{request.proc_effort_score}}</h3>
-                  <p class="card-text">{{request.proc_effort_notes}}</p>
-                </div>
-              </div>
-              <div class="card {{request.meta_effort_text}} {{request.meta_effort_color}} mb-3">
-                <h5 class="card-header">Metadata effort (MSU)</h5>
-                <div class="card-body">
-                  <h3 class="card-title">{{request.meta_effort_score}}</h3>
-                  <p class="card-text">{{request.meta_effort_notes}}</p>
-                </div>
-              </div>
-              <div class="card {{request.rights_effort_text}} {{request.rights_effort_color}} mb-3">
-                <h5 class="card-header">Rights effort (Rights)</h5>
-                <div class="card-body">
-                  <h3 class="card-title">{{request.rights_effort_score}}</h3>
-                  <p class="card-text">{{request.rights_effort_notes}}</p>
-                </div>
-              </div>
-              <div class="card {{request.access_effort_text}} {{request.access_effort_color}} mb-3">
-                <h5 class="card-header">Level of access (Rights)</h5>
-                <div class="card-body">
-                  <h3 class="card-title">{{request.access_effort_score}}</h3>
-                  <p class="card-text">{{request.access_effort_notes}}</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-
-    <div class="row top-buffer bottom-buffer">
-        <div class="col-lg-12">
-            <div class="page-header">
-                <h2 class="display-5">Click Headings to Toggle Additional Info:</h2>
+                <h3 class="display-5">Click Headings to Toggle Additional Info:</h3>
             </div>
         </div>
     </div>
@@ -205,6 +141,74 @@ body {
             <td>{{request.condition}}</td>
         </tr>
     </table>
+
+    <div class="row top-buffer bottom-buffer">
+        <div class="col-lg-12">
+            <div class="page-header">
+                <h1 class="display-5">Level of Effort Ratings by Production Group:</h1>
+            </div>
+        </div>
+    </div>
+
+      <!-- Containers
+      ================================================== -->
+      <div class="bs-docs-section bottom-buffer">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="bs-component">
+              <div class="card {{request.ref_effort_text}} {{request.ref_effort_color}} mb-3">
+                <h5 class="card-header">Reformatting Effort (DIU)</h5>
+                <div class="card-body">
+                  <h3 class="card-title">{{request.ref_effort_score}}</h3>
+                  <p class="card-text">{{request.ref_effort_notes}}</p>
+                </div>
+              </div>
+              <div class="card {{request.reg_effort_text}} {{request.reg_effort_color}} mb-3">
+                <h5 class="card-header">Registrar Effort (Collections Management/Registrar)</h5>
+                <div class="card-body">
+                  <h3 class="card-title">{{request.reg_effort_score}}</h3>
+                  <p class="card-text">{{request.reg_effort_notes}}</p>
+                </div>
+              </div>
+              <div class="card {{request.cons_effort_text}} {{request.cons_effort_color}} mb-3">
+                <h5 class="card-header">Conservation/Preservation effort (Collections Management/Conservation)</h5>
+                <div class="card-body">
+                  <h3 class="card-title">{{request.cons_effort_score}}</h3>
+                  <p class="card-text">{{request.cons_effort_notes}}</p>
+                </div>
+              </div>
+              <div class="card {{request.proc_effort_text}} {{request.proc_effort_color}} mb-3">
+                <h5 class="card-header">Processing effort (SFP/Archives)</h5>
+                <div class="card-body">
+                  <h3 class="card-title">{{request.proc_effort_score}}</h3>
+                  <p class="card-text">{{request.proc_effort_notes}}</p>
+                </div>
+              </div>
+              <div class="card {{request.meta_effort_text}} {{request.meta_effort_color}} mb-3">
+                <h5 class="card-header">Metadata effort (MSU)</h5>
+                <div class="card-body">
+                  <h3 class="card-title">{{request.meta_effort_score}}</h3>
+                  <p class="card-text">{{request.meta_effort_notes}}</p>
+                </div>
+              </div>
+              <div class="card {{request.rights_effort_text}} {{request.rights_effort_color}} mb-3">
+                <h5 class="card-header">Rights effort (Rights)</h5>
+                <div class="card-body">
+                  <h3 class="card-title">{{request.rights_effort_score}}</h3>
+                  <p class="card-text">{{request.rights_effort_notes}}</p>
+                </div>
+              </div>
+              <div class="card {{request.access_effort_text}} {{request.access_effort_color}} mb-3">
+                <h5 class="card-header">Level of access (Rights)</h5>
+                <div class="card-body">
+                  <h3 class="card-title">{{request.access_effort_score}}</h3>
+                  <p class="card-text">{{request.access_effort_notes}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 </div>
 </body>
 </html>
