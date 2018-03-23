@@ -186,12 +186,13 @@ class Digirequests:
     
     def get_request_data(title):
         import csv
-        import sys
+        import requests
+        import io
 
-        fh = open('Digi.csv') 
+        r = requests.get('https://docs.google.com/spreadsheets/d/1BLvFt9l6ex6Gdv4Vx1WPuwXhDH0qlVoE1cbhiAas5Po/export?format=csv') 
 
-        reader = csv.reader(fh)
-        next(reader)
+        sio = io.StringIO( r.text, newline=None)
+        reader = csv.reader(sio, dialect=csv.excel)
 
         for row in reader:
             if row[2] == title:
@@ -235,7 +236,6 @@ class Digirequests:
 def main():
 
     import sys
-    import csv
 
     title = sys.argv[1]
     obj = Digirequests(title)
