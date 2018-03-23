@@ -198,16 +198,19 @@ class Digirequests:
             self.access_effort_text = 'text-black'
     
     def get_request_data(title):
-        import csv
         import requests
+        import csv
+        import urllib.request
         import io
 
-        r = requests.get('https://docs.google.com/spreadsheets/d/1BLvFt9l6ex6Gdv4Vx1WPuwXhDH0qlVoE1cbhiAas5Po/export?format=csv') 
-
-        sio = io.StringIO( r.text, newline=None)
-        reader = csv.reader(sio, dialect=csv.excel)            
+        my_url = 'https://docs.google.com/spreadsheets/d/1BLvFt9l6ex6Gdv4Vx1WPuwXhDH0qlVoE1cbhiAas5Po/export?format=csv'
+        
+        webpage = urllib.request.urlopen(my_url)
+        datareader = csv.reader(io.TextIOWrapper(webpage))            
+       
                     
-        for row in reader:
+
+        for row in datareader:
             if row[2] == title:                    
                 timestamp = row[0]
                 email = row[1]
