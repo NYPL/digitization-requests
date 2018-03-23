@@ -1,7 +1,20 @@
 class Digirequests:
 
     def __init__(self, title):
+        from urlextract import URLExtract
+
         timestamp, email, title, division, submitter, collection, scope, size, rationale, time, rights_online, rights_content, processing, metadata_description, metadata_catalog, metadata_issues, imaging_location, imaging_special, condition, date_range, ref_effort_score, ref_effort_notes, reg_effort_score, reg_effort_notes, cons_effort_score, cons_effort_notes, proc_effort_score, proc_effort_notes, meta_effort_score, meta_effort_notes, rights_effort_score, rights_effort_notes, access_effort_score, access_effort_notes = Digirequests.get_request_data(title)
+        
+        extractor = URLExtract()
+        meta_urls = extractor.find_urls(metadata_catalog)
+        for url in meta_urls:
+            metadata_catalog = metadata_catalog.replace(url, """<a href="{}">{}</a>""".format(url, url))
+        size_urls = extractor.find_urls(size)
+        for url in size_urls:
+            size = size.replace(url, """<a href="{}">{}</a>""".format(url, url))
+        rat_urls = extractor.find_urls(rationale)
+        for url in rat_urls:
+            rationale = rationale.replace(url, """<a href="{}">{}</a>""".format(url, url))
         self.timestamp = timestamp
         self.email = email
         self.title = title
@@ -192,10 +205,10 @@ class Digirequests:
         r = requests.get('https://docs.google.com/spreadsheets/d/1BLvFt9l6ex6Gdv4Vx1WPuwXhDH0qlVoE1cbhiAas5Po/export?format=csv') 
 
         sio = io.StringIO( r.text, newline=None)
-        reader = csv.reader(sio, dialect=csv.excel)
-
+        reader = csv.reader(sio, dialect=csv.excel)            
+                    
         for row in reader:
-            if row[2] == title:
+            if row[2] == title:                    
                 timestamp = row[0]
                 email = row[1]
                 title = row[2]
@@ -239,7 +252,6 @@ def main():
 
     title = sys.argv[1]
     obj = Digirequests(title)
-    print(obj.ref_effort_notes)
 
 
     import jinja2
